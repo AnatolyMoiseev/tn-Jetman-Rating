@@ -1,0 +1,31 @@
+#Database
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost/jetmanDB
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+#JPA
+spring.jpa:
+  show-sql: true
+  properties.hibernate.current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+  properties.hibernate.temp.use_jdbc_metadata_defaults: false
+  hibernate.ddl-auto: none
+  properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+logging:
+  level:
+    ROOT: INFO
+  pattern:
+    console: "%d{dd.MM.yyyy HH:mm:ss.SSS} %clr(%-5p) %clr(${PID}){magenta} --- [%20.20t] %clr(%-40.40logger{35}){cyan} %clr([%-4L]){blue} %clr(:){red} %m%n"
+
+# JWT Tokenz
+web:
+  security:
+    jwt:
+      tokenExpirationTime: 480 # Number of minutes
+      tokenRefreshExpirationTime: 60 # Number of minutes
+      tokenIssuer: http://localhost
+      tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+  service:
+    baseUrl: http://localhost:${server.port}/
