@@ -20,7 +20,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import ru.tn.tnJetmanRating.security.ajax.AjaxAuthenticationProvider;
 import ru.tn.tnJetmanRating.security.ajax.AjaxLoginProcessingFilter;
 import ru.tn.tnJetmanRating.security.basic.CustomAuthenticationEntryPoint;
+import ru.tn.tnJetmanRating.security.jwt.JwtAuthenticationProvider;
 import ru.tn.tnJetmanRating.security.jwt.JwtTokenAuthenticationProcessingFilter;
+import ru.tn.tnJetmanRating.security.jwt.SkipPathRequestMatcher;
 
 import java.util.Arrays;
 import java.util.List;
@@ -72,7 +74,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(jwtAuthenticationProvider);
     }
 
-    //application/octet-stream
 
     @Bean
     public static CorsConfigurationSource corsConfigurationSource() {
