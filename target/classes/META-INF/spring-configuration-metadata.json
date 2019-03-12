@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "web.security.jwt",
+      "type": "ru.tn.tnJetmanRating.config.JwtSettings",
+      "sourceType": "ru.tn.tnJetmanRating.config.JwtSettings"
+    }
+  ],
+  "properties": [
+    {
+      "name": "web.security.jwt.token-expiration-time",
+      "type": "java.lang.Integer",
+      "sourceType": "ru.tn.tnJetmanRating.config.JwtSettings"
+    },
+    {
+      "name": "web.security.jwt.token-issuer",
+      "type": "java.lang.String",
+      "sourceType": "ru.tn.tnJetmanRating.config.JwtSettings"
+    },
+    {
+      "name": "web.security.jwt.token-refresh-expiration-time",
+      "type": "java.lang.Integer",
+      "sourceType": "ru.tn.tnJetmanRating.config.JwtSettings"
+    },
+    {
+      "name": "web.security.jwt.token-signing-key",
+      "type": "java.lang.String",
+      "sourceType": "ru.tn.tnJetmanRating.config.JwtSettings"
+    }
+  ],
+  "hints": []
+}

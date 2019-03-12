@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -17,12 +16,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import ru.tn.tnJetmanRating.security.ajax.AjaxAuthenticationProvider;
-import ru.tn.tnJetmanRating.security.ajax.AjaxLoginProcessingFilter;
-import ru.tn.tnJetmanRating.security.basic.CustomAuthenticationEntryPoint;
-import ru.tn.tnJetmanRating.security.jwt.JwtAuthenticationProvider;
-import ru.tn.tnJetmanRating.security.jwt.JwtTokenAuthenticationProcessingFilter;
-import ru.tn.tnJetmanRating.security.jwt.SkipPathRequestMatcher;
+import ru.tn.tnJetmanRating.security.auth.ajax.AjaxAuthenticationProvider;
+import ru.tn.tnJetmanRating.security.auth.ajax.AjaxLoginProcessingFilter;
+import ru.tn.tnJetmanRating.security.auth.basic.CustomAuthenticationEntryPoint;
+import ru.tn.tnJetmanRating.security.auth.jwt.JwtAuthenticationProvider;
+import ru.tn.tnJetmanRating.security.auth.jwt.JwtTokenAuthenticationProcessingFilter;
+import ru.tn.tnJetmanRating.security.auth.jwt.SkipPathRequestMatcher;
 
 import java.util.Arrays;
 import java.util.List;
@@ -73,7 +72,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationProvider(ajaxAuthenticationProvider)
                 .authenticationProvider(jwtAuthenticationProvider);
     }
-
 
     @Bean
     public static CorsConfigurationSource corsConfigurationSource() {

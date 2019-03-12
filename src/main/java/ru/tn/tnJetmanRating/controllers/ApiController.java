@@ -4,7 +4,7 @@ public interface ApiController {
 
     String ROOT_PATH = "jetman/api";
 
-    String RAITING = ROOT_PATH + "/raitingList";
+    String RATING = ROOT_PATH + "/ratingList";
 
     String USER = ROOT_PATH + "user";
 

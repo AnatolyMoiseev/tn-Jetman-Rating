@@ -1,22 +1,21 @@
 package ru.tn.tnJetmanRating.service.impl.secure;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.InsufficientAuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.tn.tnJetmanRating.config.JwtSettings;
-import ru.tn.tnJetmanRating.security.jwt.verifier.TokenVerifier;
+import ru.tn.tnJetmanRating.exception.InvalidJwtToken;
+import ru.tn.tnJetmanRating.persistance.model.User;
+import ru.tn.tnJetmanRating.persistance.model.token.*;
+import ru.tn.tnJetmanRating.security.auth.jwt.verifier.TokenVerifier;
+import ru.tn.tnJetmanRating.security.domain.AuthUser;
 import ru.tn.tnJetmanRating.service.UserService;
+import ru.tn.tnJetmanRating.utils.AuthUserBuilder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static ru.tn.tnJetmanRating.config.SecurityConfig.AUTH_HEADER_NAME;
 import static ru.tn.tnJetmanRating.config.SecurityConfig.REFRESH_TOKEN;
@@ -51,16 +50,10 @@ public class RefreshTokenService {
         String subject = refreshToken.getSubject();
         User user = userService.getUserByUserName(subject).orElseThrow(() -> new UsernameNotFoundException("User not found: " + subject));
 
-        if (user.getRoles() == null) throw new InsufficientAuthenticationException("User has no roles assigned");
-
-        List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(authority -> new SimpleGrantedAuthority(RoleEnum.authority(authority)))
-                .collect(Collectors.toList());
 
         AuthUser userContext = new AuthUserBuilder()
-                .id(user.getUserId())
+                .id(user.getId())
                 .username(user.getScreenName())
-                .authorities(authorities)
                 .build();
 
         AccessJwtToken accessToken = tokenFactory.createAccessJwtToken(userContext);
