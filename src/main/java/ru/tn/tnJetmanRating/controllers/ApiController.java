@@ -6,6 +6,6 @@ public interface ApiController {
 
     String RATING = ROOT_PATH + "/ratingList";
 
-    String USER = ROOT_PATH + "user";
+    String USER = ROOT_PATH + "/user";
 
 }
