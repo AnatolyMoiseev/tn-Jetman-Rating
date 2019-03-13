@@ -24,7 +24,7 @@ sping.flyway:
   enabled: true
   locations:
     - classpath:db/migration
-   # - classpath:db/repeatable
+    - classpath:db/repeatable
 
 #JPA
 spring.jpa:

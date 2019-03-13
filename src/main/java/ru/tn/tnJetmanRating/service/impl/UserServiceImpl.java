@@ -7,7 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.tn.tnJetmanRating.exception.ResourceNotFoundException;
 import ru.tn.tnJetmanRating.persistance.dto.SignUpDto;
-import ru.tn.tnJetmanRating.persistance.dto.UserDto;
 import ru.tn.tnJetmanRating.persistance.model.Avatar;
 import ru.tn.tnJetmanRating.persistance.model.Jetpack;
 import ru.tn.tnJetmanRating.persistance.model.User;
@@ -32,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserById(Long id) {
-        return dao.findOneByUserId(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        return dao.findOneById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }
 
     @Override
@@ -56,15 +55,34 @@ public class UserServiceImpl implements UserService {
         if (userDetails == null) {
             User user = new User();
             user.setScreenName(signUpDto.getScreenName());
-            String encodePassword = new BCryptPasswordEncoder().encode(signUpDto.getPasssword());
+            String encodePassword = new BCryptPasswordEncoder().encode(signUpDto.getPassword());
             user.setPassword(encodePassword);
-            User save = userDetailService.save(user);
+            user.setPosition(null);
             user.setAvatar(new Avatar());
             user.setJetpack(new Jetpack());
+            User save = userDetailService.save(user);
             return save.toString();
         }
         return null;
     }
 
+    @Override
+    public User updateUser(User updateUser) {
+        return dao.findOneById(updateUser.getId())
+                .map(user -> {
+                    user.setScreenName(user.getScreenName());
+                    user.setDistance(user.getDistance());
+                    user.setPosition(user.getPosition());
+                    user.setAvatar(user.getAvatar());
+                    user.setJetpack(user.getJetpack());
+                    return dao.save(user);
+                })
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", updateUser.getId()));
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        dao.deleteById(id.intValue());
+    }
 
 }

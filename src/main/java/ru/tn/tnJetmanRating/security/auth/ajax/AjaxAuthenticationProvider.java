@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -40,10 +41,10 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
 
         log.info("user: {}", user);
 
-        if (user.getAuthorities() == null) {
-            throw new InsufficientAuthenticationException("User has no roles assigned");
+        if (!encoder.matches(password, user.getPassword())) {
+            throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
         } else {
-            log.info("Found roles");
+            log.info("Password match");
         }
 
         return new UsernamePasswordAuthenticationToken(user, user, user.getAuthorities());

@@ -1,6 +1,7 @@
 package ru.tn.tnJetmanRating.persistance.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "rating")
+@Data
 public class Rating {
 
     @Id
@@ -16,10 +18,9 @@ public class Rating {
     @Column(name = "id", unique = true, nullable = false, precision = 15)
     private int id;
 
-    private int position;
-
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    //@JsonIgnore
     private List<User> users;
 
 

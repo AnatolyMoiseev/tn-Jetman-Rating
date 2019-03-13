@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Jetpack_ {
 
 	public static volatile SingularAttribute<Jetpack, Integer> level;
-	public static volatile SingularAttribute<Jetpack, Integer> id;
+	public static volatile SingularAttribute<Jetpack, Long> id;
 
 	public static final String LEVEL = "level";
 	public static final String ID = "id";

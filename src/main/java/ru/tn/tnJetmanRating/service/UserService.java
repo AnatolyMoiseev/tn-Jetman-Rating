@@ -11,8 +11,6 @@ public interface UserService {
 
     String signUpUser(SignUpDto signUpDto);
 
-    String signInUser(User user);
-
     User updateUser(User user);
 
     User getUserById(Long id);

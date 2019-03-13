@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Avatar_ {
 
 	public static volatile SingularAttribute<Avatar, Integer> level;
-	public static volatile SingularAttribute<Avatar, Integer> id;
+	public static volatile SingularAttribute<Avatar, Long> id;
 
 	public static final String LEVEL = "level";
 	public static final String ID = "id";

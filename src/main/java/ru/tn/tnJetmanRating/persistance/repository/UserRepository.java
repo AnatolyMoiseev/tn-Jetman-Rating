@@ -13,6 +13,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     User findUserByScreenName(String screenName);
 
-    Optional<User> findOneByUserId(Long id);
+    Optional<User> findOneById(Long id);
 
 }

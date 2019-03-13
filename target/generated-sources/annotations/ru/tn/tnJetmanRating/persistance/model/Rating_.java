@@ -10,11 +10,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Rating_ {
 
 	public static volatile SingularAttribute<Rating, Integer> id;
-	public static volatile SingularAttribute<Rating, Integer> position;
 	public static volatile ListAttribute<Rating, User> users;
 
 	public static final String ID = "id";
-	public static final String POSITION = "position";
 	public static final String USERS = "users";
 
 }

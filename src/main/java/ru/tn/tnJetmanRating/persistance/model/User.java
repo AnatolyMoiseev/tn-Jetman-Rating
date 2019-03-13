@@ -7,7 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "tn_user")
 @Data
 public class User {
 
@@ -21,13 +21,17 @@ public class User {
 
     private String password;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "avatar")
-    @PrimaryKeyJoinColumn
-    @JsonIgnore
+    private Integer distance;
+
+    private Integer position;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    //@JsonIgnore
     private Avatar avatar;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "jetpack")
-    @PrimaryKeyJoinColumn
-    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id")
+    //@JsonIgnore
     private Jetpack jetpack;
 }

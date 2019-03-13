@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import ru.tn.tnJetmanRating.persistance.model.Avatar;
 import ru.tn.tnJetmanRating.persistance.model.Jetpack;
+import ru.tn.tnJetmanRating.persistance.model.User;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -11,10 +14,13 @@ public class UserDto {
 
     private String screenName;
 
-    private String passsword;
+    private Integer distance;
+
+    private Integer position;
 
     private Avatar avatar;
 
     private Jetpack jetpack;
+
 
 }

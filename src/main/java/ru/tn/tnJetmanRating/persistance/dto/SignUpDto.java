@@ -9,6 +9,6 @@ public class SignUpDto {
 
     private String screenName;
 
-    private String passsword;
+    private String password;
 
 }

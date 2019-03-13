@@ -36,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String REFRESH_TOKEN_URL = "jetman/auth/token";
     public static final String API_ROOT_URL = "/jetman/**";
 
-
     @Autowired
     private AuthenticationSuccessHandler successHandler;
     @Autowired

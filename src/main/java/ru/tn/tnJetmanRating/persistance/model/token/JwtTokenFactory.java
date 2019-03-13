@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.tn.tnJetmanRating.config.JwtSettings;
 import ru.tn.tnJetmanRating.enums.Scopes;
 import ru.tn.tnJetmanRating.security.domain.AuthUser;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class JwtTokenFactory {
 
     private final JwtSettings settings;
@@ -29,12 +31,9 @@ public class JwtTokenFactory {
         if (StringUtils.isBlank(authUser.getUsername()))
             throw new IllegalArgumentException("Cannot create JWT Token without username");
 
-        if (authUser.getAuthorities() == null || authUser.getAuthorities().isEmpty())
-            throw new IllegalArgumentException("User doesn't have any privileges");
-
         Claims claims = Jwts.claims().setSubject(authUser.getUsername());
 
-        claims.put("scopes", authUser.getAuthorities().stream().map(Object::toString).collect(Collectors.toList()));
+        //claims.put("scopes", authUser.getAuthorities().stream().map(Object::toString).collect(Collectors.toList()));
         claims.put("id", authUser.getId());
 
         LocalDateTime currentTime = LocalDateTime.now();
