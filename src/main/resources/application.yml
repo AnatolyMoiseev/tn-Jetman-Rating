@@ -49,3 +49,6 @@ web:
       tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
   service:
     baseUrl: http://localhost:${server.port}/
+server:
+  servlet:
+    context-path: /tn-Jetman-Rating

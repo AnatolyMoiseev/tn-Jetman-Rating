@@ -115,6 +115,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(permitAllEndpointList.toArray(new String[permitAllEndpointList.size()]))
                 .permitAll()
 
+                .antMatchers("/h2-console/**")
+                .permitAll()
+                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**")
+                .permitAll()
+                .anyRequest().authenticated()
+
                 .and()
                 .authorizeRequests()
                 .antMatchers(API_ROOT_URL).authenticated()
