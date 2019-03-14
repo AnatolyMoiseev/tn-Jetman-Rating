@@ -36,19 +36,14 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         String subject = jwsClaims.getBody().getSubject();
         List<String> scopes = jwsClaims.getBody().get("scopes", List.class);
         Integer id = jwsClaims.getBody().get("id", Integer.class);
-//        List<GrantedAuthority> authorities = scopes.stream()
-//                .map(SimpleGrantedAuthority::new)
-//                .collect(Collectors.toList());
 
         AuthUser context = id != null ?
                 new AuthUserBuilder()
                         .id(Long.valueOf(id))
                         .username(subject)
-                        //.authorities(authorities)
                         .build() :
                 new AuthUserBuilder()
                         .username(subject)
-                        //.authorities(authorities)
                         .build();
 
         return new JwtAuthenticationToken(context, context.getAuthorities());

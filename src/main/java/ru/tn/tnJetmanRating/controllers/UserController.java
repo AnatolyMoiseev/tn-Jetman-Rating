@@ -43,7 +43,7 @@ public class UserController implements ApiController {
         return ResponseEntity.ok(userService.getUserByUserName(userName));
     }
 
-    @PutMapping
+    @PutMapping("/update")
     public ResponseEntity<User> updateUser(@RequestBody User userDto){
         return ResponseEntity.ok(userService.updateUser(userDto));
     }

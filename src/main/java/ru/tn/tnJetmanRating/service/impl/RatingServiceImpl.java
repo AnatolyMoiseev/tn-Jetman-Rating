@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.tn.tnJetmanRating.persistance.dto.RatingDto;
 import ru.tn.tnJetmanRating.persistance.dto.UserDto;
 import ru.tn.tnJetmanRating.persistance.model.User;
-import ru.tn.tnJetmanRating.persistance.repository.RatingRepository;
 import ru.tn.tnJetmanRating.persistance.repository.UserRepository;
 import ru.tn.tnJetmanRating.service.RatingService;
 
@@ -15,12 +14,10 @@ import java.util.List;
 @Service
 public class RatingServiceImpl implements RatingService {
 
-    private RatingRepository dao;
     private UserRepository userRepository;
 
     @Autowired
-    public RatingServiceImpl(RatingRepository dao, UserRepository userRepository) {
-        this.dao = dao;
+    public RatingServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -31,7 +28,7 @@ public class RatingServiceImpl implements RatingService {
         List<User> userList = userRepository.findAll();
 
         userList.forEach(user -> userDtoList.add(new UserDto(user.getScreenName(), user.getDistance(),
-                user.getPosition(), user.getAvatar(), user.getJetpack())));
+                user.getPosition(), user.getLevel(), user.getAvatar(), user.getJetpack())));
 
         return new RatingDto(userDtoList);
     }

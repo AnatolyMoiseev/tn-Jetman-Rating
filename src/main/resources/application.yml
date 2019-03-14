@@ -7,6 +7,13 @@ spring:
     driver-class-name: org.postgresql.Driver
   main:
     allow-bean-definition-overriding: true
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: 0.0.1
+    enabled: true
+    locations:
+      - classpath:db/migration
+      - classpath:db/repeatable
 
 spring.http.encoding:
   charset: UTF-8
@@ -17,14 +24,6 @@ security:
   headers:
     xss: true
 
-
-sping.flyway:
-  baseline-on-migrate: true
-  baseline-version: 0.0.1
-  enabled: true
-  locations:
-    - classpath:db/migration
-    - classpath:db/repeatable
 
 #JPA
 spring.jpa:
@@ -49,6 +48,7 @@ web:
       tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
   service:
     baseUrl: http://localhost:${server.port}/
+
 server:
-  servlet:
-    context-path: /tn-Jetman-Rating
+  port: 8888
+

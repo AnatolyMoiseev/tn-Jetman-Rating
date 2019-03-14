@@ -58,6 +58,7 @@ public class UserServiceImpl implements UserService {
             String encodePassword = new BCryptPasswordEncoder().encode(signUpDto.getPassword());
             user.setPassword(encodePassword);
             user.setPosition(null);
+            user.setLevel(null);
             user.setAvatar(new Avatar());
             user.setJetpack(new Jetpack());
             User save = userDetailService.save(user);
@@ -70,11 +71,12 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User updateUser) {
         return dao.findOneById(updateUser.getId())
                 .map(user -> {
-                    user.setScreenName(user.getScreenName());
-                    user.setDistance(user.getDistance());
-                    user.setPosition(user.getPosition());
-                    user.setAvatar(user.getAvatar());
-                    user.setJetpack(user.getJetpack());
+                    user.setScreenName(updateUser.getScreenName());
+                    user.setDistance(updateUser.getDistance());
+                    user.setPosition(updateUser.getPosition());
+                    user.setLevel(updateUser.getLevel());
+                    user.setAvatar(updateUser.getAvatar());
+                    user.setJetpack(updateUser.getJetpack());
                     return dao.save(user);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", updateUser.getId()));

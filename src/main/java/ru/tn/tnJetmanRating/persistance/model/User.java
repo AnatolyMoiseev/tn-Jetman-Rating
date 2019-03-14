@@ -1,6 +1,5 @@
 package ru.tn.tnJetmanRating.persistance.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,13 +24,13 @@ public class User {
 
     private Integer position;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    private Integer level;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "id")
-    //@JsonIgnore
     private Avatar avatar;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "id")
-    //@JsonIgnore
     private Jetpack jetpack;
 }

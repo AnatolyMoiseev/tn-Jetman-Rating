@@ -18,6 +18,8 @@ public class UserDto {
 
     private Integer position;
 
+    private Integer level;
+
     private Avatar avatar;
 
     private Jetpack jetpack;
