@@ -28,8 +28,8 @@ public class UserController implements ApiController {
         return userService.signUpUser(signUpDto) != null ? HttpStatus.CREATED : HttpStatus.FORBIDDEN;
     }
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity getUser(@PathVariable long id){
+    @GetMapping(value = "/id/{id}")
+    public ResponseEntity getUserById(@PathVariable Long id){
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
@@ -38,7 +38,7 @@ public class UserController implements ApiController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @GetMapping(value = "/{userName}")
+    @GetMapping(value = "/name/{userName}")
     public ResponseEntity getUserByUserName(@PathVariable String userName) {
         return ResponseEntity.ok(userService.getUserByUserName(userName));
     }
@@ -49,7 +49,7 @@ public class UserController implements ApiController {
     }
 
     @DeleteMapping("/{id}")
-    public HttpStatus deleteUser(@PathVariable long id) {
+    public HttpStatus deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return HttpStatus.OK;
     }

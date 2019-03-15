@@ -41,20 +41,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> getUserByUserName(String userName) {
-        return dao.findUserByScreenNameIgnoreCase(userName);
+        return dao.findUserByUserNameIgnoreCase(userName);
     }
 
     @Override
     public String signUpUser(SignUpDto signUpDto) {
         UserDetails userDetails;
         try {
-            userDetails = userDetailService.loadUserByUsername(signUpDto.getScreenName());
+            userDetails = userDetailService.loadUserByUsername(signUpDto.getUserName());
         } catch (UsernameNotFoundException e){
             userDetails = null;
         }
         if (userDetails == null) {
             User user = new User();
-            user.setScreenName(signUpDto.getScreenName());
+            user.setUserName(signUpDto.getUserName());
             String encodePassword = new BCryptPasswordEncoder().encode(signUpDto.getPassword());
             user.setPassword(encodePassword);
             user.setPosition(null);
@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User updateUser) {
         return dao.findOneById(updateUser.getId())
                 .map(user -> {
-                    user.setScreenName(updateUser.getScreenName());
+                    user.setUserName(updateUser.getUserName());
                     user.setDistance(updateUser.getDistance());
                     user.setPosition(updateUser.getPosition());
                     user.setLevel(updateUser.getLevel());
@@ -84,7 +84,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long id) {
-        dao.deleteById(id.intValue());
+        User deleteUser = dao.findOneById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+        dao.delete(deleteUser);
     }
 
 }

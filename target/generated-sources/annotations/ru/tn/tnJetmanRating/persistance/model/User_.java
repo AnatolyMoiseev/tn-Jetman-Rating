@@ -13,18 +13,18 @@ public abstract class User_ {
 	public static volatile SingularAttribute<User, Integer> level;
 	public static volatile SingularAttribute<User, Jetpack> jetpack;
 	public static volatile SingularAttribute<User, Long> id;
-	public static volatile SingularAttribute<User, String> screenName;
 	public static volatile SingularAttribute<User, Integer> position;
 	public static volatile SingularAttribute<User, Avatar> avatar;
+	public static volatile SingularAttribute<User, String> userName;
 
 	public static final String PASSWORD = "password";
 	public static final String DISTANCE = "distance";
 	public static final String LEVEL = "level";
 	public static final String JETPACK = "jetpack";
 	public static final String ID = "id";
-	public static final String SCREEN_NAME = "screenName";
 	public static final String POSITION = "position";
 	public static final String AVATAR = "avatar";
+	public static final String USER_NAME = "userName";
 
 }
 

@@ -16,7 +16,7 @@ public class User {
     @Column(name = "id", unique = true, nullable = false, precision = 15)
     private Long id;
 
-    private String screenName;
+    private String userName;
 
     private String password;
 

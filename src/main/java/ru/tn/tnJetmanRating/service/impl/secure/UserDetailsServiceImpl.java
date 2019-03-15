@@ -25,7 +25,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         log.trace("Try find  user with name: {}", s);
         try {
-            return userRepository.findUserByScreenNameIgnoreCase(s)
+            return userRepository.findUserByUserNameIgnoreCase(s)
                     .map(AuthUserUtils::mapToUserDetails)
                     .orElseThrow(() -> new UsernameNotFoundException("User not found: " + s));
         } catch (UsernameNotFoundException e){

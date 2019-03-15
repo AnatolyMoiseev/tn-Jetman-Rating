@@ -27,7 +27,7 @@ public class RatingServiceImpl implements RatingService {
 
         List<User> userList = userRepository.findAll();
 
-        userList.forEach(user -> userDtoList.add(new UserDto(user.getScreenName(), user.getDistance(),
+        userList.forEach(user -> userDtoList.add(new UserDto(user.getUserName(), user.getDistance(),
                 user.getPosition(), user.getLevel(), user.getAvatar(), user.getJetpack())));
 
         return new RatingDto(userDtoList);

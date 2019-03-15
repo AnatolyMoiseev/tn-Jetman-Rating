@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class SignUpDto {
 
-    private String screenName;
+    private String userName;
 
     private String password;
 

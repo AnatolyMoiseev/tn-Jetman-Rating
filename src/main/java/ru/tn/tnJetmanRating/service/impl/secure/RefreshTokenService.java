@@ -53,7 +53,7 @@ public class RefreshTokenService {
 
         AuthUser userContext = new AuthUserBuilder()
                 .id(user.getId())
-                .username(user.getScreenName())
+                .username(user.getUserName())
                 .build();
 
         AccessJwtToken accessToken = tokenFactory.createAccessJwtToken(userContext);
