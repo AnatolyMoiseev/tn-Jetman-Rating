@@ -14,23 +14,25 @@ spring:
     locations:
       - classpath:db/migration
       - classpath:db/repeatable
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  http:
+    converters:
+      preferred-json-mapper: jackson
+    encoding:
+      charset: utf-8
+      enabled: true
 
-spring.http.encoding:
-  charset: UTF-8
-  enabled: true
-
-spring.http.converters.preferred-json-mapper: jackson
 security:
   headers:
     xss: true
 
-
 #JPA
 spring.jpa:
-  show-sql: true
   properties.hibernate.current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
   properties.hibernate.temp.use_jdbc_metadata_defaults: false
-  hibernate.ddl-auto: none
   properties.hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
 logging:
   level:

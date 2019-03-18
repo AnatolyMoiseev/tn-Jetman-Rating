@@ -26,6 +26,13 @@
 		<hibernate.search.version>5.11.1.Final</hibernate.search.version>
 		<flyway.version>5.2.3</flyway.version>
 		<commons-lang3.version>3.7</commons-lang3.version>
+		<jaxb-api.version>2.2.11</jaxb-api.version>
+		<jaxb-core.version>2.2.11</jaxb-core.version>
+		<jaxb-impl.version>2.2.11</jaxb-impl.version>
+		<activation.version>1.1.1</activation.version>
+		<springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+		<springfox-swagger-ui.version>2.9.2</springfox-swagger-ui.version>
+		<springfox-core.version>2.9.2</springfox-core.version>
 	</properties>
 
 	<dependencies>
@@ -136,40 +143,40 @@
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.2.11</version>
+			<version>${jaxb-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-core</artifactId>
-			<version>2.2.11</version>
+			<version>${jaxb-core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>
 			<artifactId>jaxb-impl</artifactId>
-			<version>2.2.11</version>
+			<version>${jaxb-impl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
-			<version>1.1.1</version>
+			<version>${activation.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
+			<version>${springfox-swagger2.version}</version>
 		</dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.9.2</version>
+            <version>${springfox-swagger-ui.version}</version>
         </dependency>
 
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-core</artifactId>
-			<version>2.9.2</version>
+			<version>${springfox-core.version}</version>
 		</dependency>
 	</dependencies>
 
