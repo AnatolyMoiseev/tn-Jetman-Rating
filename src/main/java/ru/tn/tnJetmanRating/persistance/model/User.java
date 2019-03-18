@@ -27,10 +27,10 @@ public class User {
     private Integer level;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "avatar_id")
     private Avatar avatar;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "jetpack_id")
     private Jetpack jetpack;
 }
